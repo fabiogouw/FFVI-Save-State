@@ -1,0 +1,1 @@
+# ffvi-save-state-editor
