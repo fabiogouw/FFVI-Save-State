@@ -1,0 +1,1788 @@
+[---------------------------------------------------]
+[---------------------------------------------------]
+[FINAL FANTASY III / FINAL FANTASY VI SAVE STATE FAQ]
+[                written by Zelaphny                ]
+[                   Version ALPHA                   ]
+[               zelaphny@hotmail.com                ]
+[                    May 6, 2001                    ]
+[---------------------------------------------------]
+[---------------------------------------------------]
+
+
+Table of Contents
+
+SECTION A
+
+Introduction
+Update History
+
+SECTION B
+
+1. Individual Character Properties
+  1.01 Character
+  1.02 Name
+  1.03 Level
+  1.04 Experience
+  1.05 Status Type
+  1.06 Float
+  1.07 Command
+  1.08 Vigor, Speed, Stamina, and Magic Power
+  1.09 Esper Equipped
+  1.10 Weapon, Shield, Helmet, Armor, Relic 1, and Relic 2
+2. Gold and Stuff
+3. Items
+4. Esper
+5. Magic
+6. Swdtech
+7. Blitz
+8. Lore
+9. Rage
+10. Dance
+
+SECTION C
+
+Credits/Acknowledgements
+Everything Else
+
+
+[+++++++++]
+[SECTION A]
+[+++++++++]
+
+
+Introduction
+------------
+
+Welcome to my first attempt at a FAQ. This FAQ was designed for people
+who want to tinker with the Final Fantasy 3 (Final Fantasy 6 Japanese)
+save state file that ZSNES uses whenever you save a particular state
+in the game. Obviously, this save state ability is very handy saving
+is not normally possible. But by editing the save state state file,
+you can modify just about any statistic in the game such as item, HP,
+magic, etc.
+
+However, to edit save state, you will need a HEX editor. There are a
+lot of hex editors available on the Internet. I personally used Hex
+Workshop, a program made by BreakPoint Software.
+
+Another thing is that you notice that I refer to addresses instead of
+offset (that Hex Workshop uses). They are the same.
+
+Additionally, you will need a basic knowledge of how the hex-based
+number system works. I will only give a brief summary of what it is
+here.
+
+Hex-based number system works on a base of 16 instead of the standard
+10 that the decimal system uses. So, that means that single digits
+run form 0 to 15 (for a total of 16 numbers) before the next power
+shows up. This is represented by 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B,
+C, D, E, and F. After that 10 in hex = 16 in decimal and so on.
+
+Finally, and probably the obvious thing, is that you will need the
+save state file created by ZSNES.
+
+One other note is that most, if not all, of the names listed here are
+written as they appear in the game itself. This means that items like
+the DiamondArmor does not have a space in it. This is NOT a typo.
+
+Have fun!
+
+Update History
+--------------
+
+Version ALPHA
+-This is the first edition of this FAQ.
+-Revision will appear as needed.
+
+
+[+++++++++]
+[SECTION B]
+[+++++++++]
+
+All addresses (offsets) are reduced to four digits. This is because
+there are no statistics that are stored in addresses higher than FFFF.
+
+I have decided to list all the characters' stats locations first prior
+to explaining what each one of them is in detail. Refer to second half
+of this section for information regarding each address name.
+
+
+**************************************
+* 1. Individual Character Properties *
+**************************************
+
+
+=PRIMARY CHARACTERS=
+
+* TERRA *
+
+Character  -> 2213 to 2214
+
+Name       -> 2215 to 221A
+
+Level      -> 221B
+Current HP -> 221C to 221D
+Maximum HP -> 221E to 221F
+Current MP -> 2220 to 2221
+Maximum MP -> 2222 to 2223
+Experience -> 2224 to 2226
+
+Status     -> 2227
+Float      -> 2228
+
+Command 1  -> 2229
+Command 2  -> 222A
+Command 3  -> 222B
+Command 4  -> 222C
+
+Vigor      -> 222D
+Speed      -> 222E
+Stamina    -> 222F
+Magic      -> 2230
+
+Esper      -> 2231
+Weapon     -> 2232
+Shield     -> 2233
+Helmet     -> 2234
+Armor      -> 2235
+Relic 1    -> 2236
+Relic 2    -> 2237
+
+* LOCKE *
+
+Character  -> 2238 to 2239
+
+Name       -> 223A to 223F
+
+Level      -> 2240
+Current HP -> 2241 to 2242
+Maximum HP -> 2243 to 2244
+Current MP -> 2245 to 2246
+Maximum MP -> 2247 to 2248
+Experience -> 2249 to 224B
+
+Status     -> 224C
+Float      -> 224D
+
+Command 1  -> 224E
+Command 2  -> 224F
+Command 3  -> 2250
+Command 4  -> 2251
+
+Vigor      -> 2252
+Speed      -> 2253
+Stamina    -> 2254
+Magic      -> 2255
+
+Esper      -> 2256
+Weapon     -> 2257
+Shield     -> 2258
+Helmet     -> 2259
+Armor      -> 225A
+Relic 1    -> 225B
+Relic 2    -> 225C
+
+* CYAN *
+
+Character  -> 225D to 225E
+
+Name       -> 225F to 2264
+
+Level      -> 2265
+Current HP -> 2266 to 2267
+Maximum HP -> 2268 to 2269
+Current MP -> 226A to 226B
+Maximum MP -> 226C to 226D
+Experience -> 226E to 2270
+
+Status     -> 2271
+Float      -> 2272
+
+Command 1  -> 2273
+Command 2  -> 2274
+Command 3  -> 2275
+Command 4  -> 2276
+
+Vigor      -> 2277
+Speed      -> 2278
+Stamina    -> 2279
+Magic      -> 227A
+
+Esper      -> 227B
+Weapon     -> 227C
+Shield     -> 227D
+Helmet     -> 227E
+Armor      -> 227F
+Relic 1    -> 2280
+Relic 2    -> 2281
+
+* SHADOW *
+
+Character  -> 2282 to 2283
+
+Name       -> 2284 to 2289
+
+Level      -> 228A
+Current HP -> 228B to 228C
+Maximum HP -> 228D to 228E
+Current MP -> 228F to 2290
+Maximum MP -> 2291 to 2292
+Experience -> 2293 to 2295
+
+Status     -> 2296
+Float      -> 2297
+
+Command 1  -> 2298
+Command 2  -> 2299
+Command 3  -> 229A
+Command 4  -> 229B
+
+Vigor      -> 229C
+Speed      -> 229D
+Stamina    -> 229E
+Magic      -> 229F
+
+Esper      -> 22A0
+Weapon     -> 22A1
+Shield     -> 22A2
+Helmet     -> 22A3
+Armor      -> 22A4
+Relic 1    -> 22A5
+Relic 2    -> 22A6
+
+* EDGAR *
+
+Character  -> 22A7 to 22A8
+
+Name       -> 22A9 to 22AE
+
+Level      -> 22AF
+Current HP -> 22B0 to 22B1
+Maximum HP -> 22B2 to 22B3
+Current MP -> 22B4 to 22B5
+Maximum MP -> 22B6 to 22B7
+Experience -> 22B8 to 22BA
+
+Status     -> 22BB
+Float      -> 22BC
+
+Command 1  -> 22BD
+Command 2  -> 22BE
+Command 3  -> 22BF
+Command 4  -> 22C0
+
+Vigor      -> 22C1
+Speed      -> 22C2
+Stamina    -> 22C3
+Magic      -> 22C4
+
+Esper      -> 22C5
+Weapon     -> 22C6
+Shield     -> 22C7
+Helmet     -> 22C8
+Armor      -> 22C9
+Relic 1    -> 22CA
+Relic 2    -> 22CB
+
+* SABIN *
+
+Character  -> 22CC to 22CD
+
+Name       -> 22CE to 22D3
+
+Level      -> 22D4
+Current HP -> 22D5 to 22D6
+Maximum HP -> 22D7 to 22D8
+Current MP -> 22D9 to 22DA
+Maximum MP -> 22DB to 22DC
+Experience -> 22DD to 22DF
+
+Status     -> 22E0
+Float      -> 22E1
+
+Command 1  -> 22E2
+Command 2  -> 22E3
+Command 3  -> 22E4
+Command 4  -> 22E5
+
+Vigor      -> 22E6
+Speed      -> 22E7
+Stamina    -> 22E8
+Magic      -> 22E9
+
+Esper      -> 22EA
+Weapon     -> 22EB
+Shield     -> 22EC
+Helmet     -> 22ED
+Armor      -> 22EE
+Relic 1    -> 22EF
+Relic 2    -> 22F0
+
+* CELES *
+
+Character  -> 22F1 to 22F2
+
+Name       -> 22F3 to 22F8
+
+Level      -> 22F9
+Current HP -> 22FA to 22FB
+Maximum HP -> 22FC to 22FD
+Current MP -> 22FE to 22FF
+Maximum MP -> 2300 to 2301
+Experience -> 2302 to 2304
+
+Status     -> 2305
+Float      -> 2306
+
+Command 1  -> 2307
+Command 2  -> 2308
+Command 3  -> 2309
+Command 4  -> 230A
+
+Vigor      -> 230B
+Speed      -> 230C
+Stamina    -> 230D
+Magic      -> 230E
+
+Esper      -> 230F
+Weapon     -> 2310
+Shield     -> 2311
+Helmet     -> 2312
+Armor      -> 2313
+Relic 1    -> 2314
+Relic 2    -> 2315
+
+* STRAGO *
+
+Character  -> 2316 to 2317
+
+Name       -> 2318 to 231D
+
+Level      -> 231E
+Current HP -> 231F to 2320
+Maximum HP -> 2321 to 2322
+Current MP -> 2323 to 2324
+Maximum MP -> 2325 to 2326
+Experience -> 2327 to 2329
+
+Status     -> 232A
+Float      -> 232B
+
+Command 1  -> 232C
+Command 2  -> 232D
+Command 3  -> 232E
+Command 4  -> 232F
+
+Vigor      -> 2330
+Speed      -> 2331
+Stamina    -> 2332
+Magic      -> 2333
+
+Esper      -> 2334
+Weapon     -> 2335
+Shield     -> 2336
+Helmet     -> 2337
+Armor      -> 2338
+Relic 1    -> 2339
+Relic 2    -> 233A
+
+* RELM *
+
+Character  -> 233B to 233C
+
+Name       -> 233D to 2342
+
+Level      -> 2343
+Current HP -> 2344 to 2345
+Maximum HP -> 2346 to 2347
+Current MP -> 2348 to 2349
+Maximum MP -> 234A to 234B
+Experience -> 234C to 234E
+
+Status     -> 234F
+Float      -> 2350
+
+Command 1  -> 2351
+Command 2  -> 2352
+Command 3  -> 2353
+Command 4  -> 2354
+
+Vigor      -> 2355
+Speed      -> 2356
+Stamina    -> 2357
+Magic      -> 2358
+
+Esper      -> 2359
+Weapon     -> 235A
+Shield     -> 235B
+Helmet     -> 235C
+Armor      -> 235D
+Relic 1    -> 235E
+Relic 2    -> 235F
+
+* SETZER *
+
+Character  -> 2360 to 2361
+
+Name       -> 2362 to 2367
+
+Level      -> 2368
+Current HP -> 2369 to 236A
+Maximum HP -> 236B to 236C
+Current MP -> 236D to 236E
+Maximum MP -> 236F to 2370
+Experience -> 2371 to 2373
+
+Status     -> 2374
+Float      -> 2375
+
+Command 1  -> 2376
+Command 2  -> 2377
+Command 3  -> 2378
+Command 4  -> 2379
+
+Vigor      -> 237A
+Speed      -> 237B
+Stamina    -> 237C
+Magic      -> 237D
+
+Esper      -> 237E
+Weapon     -> 237F
+Shield     -> 2380
+Helmet     -> 2381
+Armor      -> 2382
+Relic 1    -> 2383
+Relic 2    -> 2384
+
+* MOG *
+
+Character  -> 2385 to 2386
+
+Name       -> 2387 to 238C
+
+Level      -> 238D
+Current HP -> 238E to 238F
+Maximum HP -> 2390 to 2391
+Current MP -> 2392 to 2393
+Maximum MP -> 2394 to 2395
+Experience -> 2396 to 2398
+
+Status     -> 2399
+Float      -> 239A
+
+Command 1  -> 239B
+Command 2  -> 239C
+Command 3  -> 239D
+Command 4  -> 239E
+
+Vigor      -> 239F
+Speed      -> 23A0
+Stamina    -> 23A1
+Magic      -> 23A2
+
+Esper      -> 23A3
+Weapon     -> 23A4
+Shield     -> 23A5
+Helmet     -> 23A6
+Armor      -> 23A7
+Relic 1    -> 23A8
+Relic 2    -> 23A9
+
+* GAU *
+
+Character  -> 23AA to 23AB
+
+Name       -> 23AC to 23B1
+
+Level      -> 23B2
+Current HP -> 23B3 to 23B4
+Maximum HP -> 23B5 to 23B6
+Current MP -> 23B7 to 23B8
+Maximum MP -> 23B9 to 23BA
+Experience -> 23BB to 23BD
+
+Status     -> 23BE
+Float      -> 23BF
+
+Command 1  -> 23C0
+Command 2  -> 23C1
+Command 3  -> 23C2
+Command 4  -> 23C3
+
+Vigor      -> 23C4
+Speed      -> 23C5
+Stamina    -> 23C6
+Magic      -> 23C7
+
+Esper      -> 23C8
+Weapon     -> 23C9
+Shield     -> 23CA
+Helmet     -> 23CB
+Armor      -> 23CC
+Relic 1    -> 23CD
+Relic 2    -> 23CE
+
+* GOGO *
+
+Character  -> 23CF to 23D0
+
+Name       -> 23D1 to 23D6
+
+Level      -> 23D7
+Current HP -> 23D8 to 23D9
+Maximum HP -> 23DA to 23DB
+Current MP -> 23DC to 23DD
+Maximum MP -> 23DE to 23DF
+Experience -> 23E0 to 23E2
+
+Status     -> 23E3
+Float      -> 23E4
+
+Command 1  -> 23E5
+Command 2  -> 23E6
+Command 3  -> 23E7
+Command 4  -> 23E8
+
+Vigor      -> 23E9
+Speed      -> 23EA
+Stamina    -> 23EB
+Magic      -> 23EC
+
+Esper      -> 23ED
+Weapon     -> 23EE
+Shield     -> 23EF
+Helmet     -> 23F0
+Armor      -> 23F1
+Relic 1    -> 23F2
+Relic 2    -> 23F3
+
+* UMARO *
+
+Character  -> 23F4 to 23F5
+
+Name       -> 23F6 to 23FB
+
+Level      -> 23FC
+Current HP -> 23FD to 23FE
+Maximum HP -> 23FF to 2400
+Current MP -> 2401 to 2402
+Maximum MP -> 2403 to 2404
+Experience -> 2405 to 2407
+
+Status     -> 2408
+Float      -> 2409
+
+Command 1  -> 240A
+Command 2  -> 240B
+Command 3  -> 240C
+Command 4  -> 240D
+
+Vigor      -> 240E
+Speed      -> 240F
+Stamina    -> 2410
+Magic      -> 2411
+
+Esper      -> 2412
+Weapon     -> 2413
+Shield     -> 2414
+Helmet     -> 2415
+Armor      -> 2416
+Relic 1    -> 2417
+Relic 2    -> 2418
+
+=SUPPORTING CHARACTERS=
+
+* WEDGE/BANON *
+
+Character  -> 2419 to 241A
+
+Name       -> 241B to 2420
+
+Level      -> 2421
+Current HP -> 2422 to 2423
+Maximum HP -> 2424 to 2425
+Current MP -> 2426 to 2427
+Maximum MP -> 2428 to 2429
+Experience -> 242A to 242C
+
+Status     -> 242D
+Float      -> 242E
+
+Command 1  -> 242F
+Command 2  -> 2430
+Command 3  -> 2431
+Command 4  -> 2432
+
+Vigor      -> 2433
+Speed      -> 2434
+Stamina    -> 2435
+Magic      -> 2436
+
+Esper      -> 2437
+Weapon     -> 2438
+Shield     -> 2439
+Helmet     -> 243A
+Armor      -> 243B
+Relic 1    -> 243C
+Relic 2    -> 243D
+
+* VICKS *
+
+Character  -> 243E to 243F
+
+Name       -> 2440 to 2445
+
+Level      -> 2446
+Current HP -> 2447 to 2448
+Maximum HP -> 2449 to 244A
+Current MP -> 244B to 244C
+Maximum MP -> 244D to 244E
+Experience -> 244F to 2451
+
+Status     -> 2452
+Float      -> 2453
+
+Command 1  -> 2454
+Command 2  -> 2455
+Command 3  -> 2456
+Command 4  -> 2457
+
+Vigor      -> 2458
+Speed      -> 2459
+Stamina    -> 245A
+Magic      -> 245B
+
+Esper      -> 245C
+Weapon     -> 245D
+Shield     -> 245E
+Helmet     -> 245F
+Armor      -> 2460
+Relic 1    -> 2461
+Relic 2    -> 2462
+
+===============
+1.01 Character:
+===============
+
+Both addresses must contain the same hex value. Generally speaking,
+though, the first address contains the character type while the second
+address contains the portrait of the character in the menu screen.
+
+Throughout the game, supporting characters will take the place of
+normal characters, such as the Moogle team in the Mines of Narshe at
+the beginning of the game. However, as your acquire more and more
+primary characters, supporting characters will either reside in the
+addresses of primary characters you have not met yet or in "extra"
+character addresses at the end of the primary character addresses.
+
+For characters not normally selectable such as Kefka, the portrait
+found in the menu is written in round brackets. Moreover, as soon as
+you change screens, the field map version of your character reverts
+to the original character although the portrait stays.
+
+For glitch characters that do not normally enter battles such as
+townspeople, their appearance on the field/area is written in
+square brackets. Evidently, any value higher than 1B is useless.
+Also, colour of the character is often distorted.
+
+00 - Terra
+01 - Locke
+02 - Cyan
+03 - Shadow
+04 - Edgar
+05 - Sabin
+06 - Celes
+07 - Strago
+08 - Relm
+09 - Setzer
+0A - Mog
+0B - Gau
+0C - Gogo
+0D - Umaro
+OE - Vicks/Wedge
+OF - Imp
+10 - Leo
+11 - Banon
+12 - Esper Terra (Terra)
+13 - Merchant Locke (Soldier)
+14 - Ghost
+15 - Kefka (Terra)
+16 - Emperor Gestahl (Terra)
+17 - Soldier Locke [Village Elder] (Terra)
+18 - Empty [Young Man] (Terra) *cannot fight during battle*
+19 - Empty [Interceptor] (Terra) *cannot fight during battle*
+1A - Empty [Opera Celes] (Celes) *cannot fight during battle*
+1B - Empty [Scholar] (Glitch) *will hang the game when fighting*
+
+Interesting to note that Vicks has code 20 and Wedge has code 21 for
+character type. Both, however, have code OE as the second address.
+
+==========
+1.02 Name:
+==========
+
+These six addresses are used to store the values for the letters
+that you inserted when you were given the opportunity to name your
+characters or when you used the Rename Card item.
+
+I will not list all 255 possible letters and characters, however,
+the value FF indicates a black space in the name.
+
+===========
+1.03 Level:
+===========
+
+Indicates the character's level, regardless of experience points.
+Values range from 00 to 63 for proper values.
+
+Current HP, Maximum HP, Current MP, and Maximum MP:
+
+All HP and MP values use 2 addresses, and they are inserted in reverse
+order. For example, if you want 9999 (270F in hex) as your Maximum HP
+for Terra, the values at the addresses 221E and 221F must be 0F and 27
+respectively.
+
+Maximum values for Current/Maximum HP is 9999 (270F in hex)
+Maximum values for Current/Maximum MP is 999 (3E7 in hex)
+
+================
+1.04 Experience:
+================
+
+Experience values are spread over 3 addresses. Values here must also
+be inserted in reverse order. Therefore, to set Terra's experience
+value at 5,000,000 (4C4840 in hex), insert 40 in address 2224, 48 in
+address 2225, and 4C in address 2226.
+
+Maximum value for Experience is 16,777,215 (FF FF FF in hex). Keep in
+mind that once you go over 16,777,215 experience points, the counter
+resets to 0 and you start earning experience from the beginning again.
+
+You can easily reach level 99 with only 2,700,000 experience points.
+Listed below are the experience needed to reach a certain level.
+
+01 - 0       21 - 26360    41 - 190416   61 - 620096    81 - 1443368
+02 - 32      22 - 30232    42 - 204520   62 - 650840    82 - 1497160
+03 - 96      23 - 24456    43 - 219320   63 - 682600    83 - 1553364
+04 - 208     24 - 39056    44 - 234808   64 - 715368    84 - 1608712
+05 - 400     25 - 44072    45 - 251000   65 - 749160    85 - 1666512
+06 - 672     26 - 49464    46 - 267936   66 - 784016    86 - 1725688
+07 - 1056    27 - 55288    47 - 285600   67 - 819920    87 - 1786240
+08 - 1552    28 - 61568    48 - 304040   68 - 856920    88 - 1848184
+09 - 2184    29 - 68304    49 - 323248   69 - 895016    89 - 1911552
+10 - 2976    30 - 75496    50 - 343248   70 - 934208    90 - 1976352
+11 - 3936    31 - 93184    51 - 364064   71 - 974536    91 - 2042608
+12 - 5080    32 - 91384    52 - 385696   72 - 1016000   92 - 2110320
+13 - 6432    33 - 100083   53 - 408160   73 - 1058640   93 - 2179504
+14 - 7992    34 - 108344   54 - 431488   74 - 1102456   94 - 2250192
+15 - 9784    35 - 119136   55 - 455680   75 - 1147456   95 - 2322392
+16 - 11840   36 - 129504   56 - 480776   76 - 1193648   96 - 2396128
+17 - 14152   37 - 140464   57 - 506760   77 - 1241080   97 - 2471400
+18 - 16736   38 - 152008   58 - 533680   78 - 1289744   98 - 2548224
+19 - 19616   39 - 164184   59 - 561528   79 - 1339672   99 - 2637112
+20 - 22832   40 - 176976   60 - 590320   80 - 1390872
+
+==================
+1.05 Status Types:
+==================
+
+Only six status ailments are permanent outside the battle:
+Darkness, Zombie, Poison, Invisible, Imp, and Stone
+
+The other "status" ailment is Wounded (when your character's HP is
+at zero), which takes precedence over all other status ailments.
+
+The [Magitek] status indicates that your party is outfitted with
+MagiTek armor. This may cause some color gitches on the world map
+and rendered areas, though.
+
+00 - None
+01 - Darkness
+02 - Zombie
+03 - Zombie and Darkness
+04 - Poison
+05 - Poison and Darkness
+06 - Poison and Zombie
+07 - Poison, Zombie, and Darkness
+08 - [MagiTek] None
+09 - [MagiTek] Darkness
+0A - [MagiTek] Zombie
+0B - [MagiTek] Zombie and Darkness
+0C - [MagiTek] Poison
+0D - [MagiTek] Poison and Darkness
+0E - [MagiTek] Poison and Zombie
+0F - [MagiTek] Poison, Zombie, and Darkness
+10 - Invisible
+11 - Invisible and Darkness
+12 - Invisible and Zombie
+13 - Invisible, Zombie, and Darkness
+14 - Invisible and Poison
+15 - Invisible, Poison, and Darkness
+16 - Invisible, Poison, and Zombie
+17 - Invisible, Poison, Zombie, and Darkness
+18 - [MagiTek] Invisible
+19 - [MagiTek] Invisible and Darkness
+1A - [MagiTek] Invisible and Zombie
+1B - [MagiTek] Invisible, Zombie, and Darkness
+1C - [MagiTek] Invisible and Poison
+1D - [MagiTek] Invisible, Poison, and Darkness
+1E - [MagiTek] Invisible, Poison, and Zombie
+1F - [MagiTek] Invisible, Poison, Zombie, and Darkness
+20 - Imp
+21 - Imp and Darkness
+22 - Imp and Zombie
+22 - Imp, Zombie, and Darkness
+24 - Imp and Poison
+25 - Imp, Poison, and Darkness
+26 - Imp, Poison, and Zombie
+27 - Imp, Poison, Zombie, and Darkness
+28 - [MagiTek] Imp
+29 - [MagiTek] Imp and Darkness
+2A - [MagiTek] Imp and Zombie
+2B - [MagiTek] Imp, Zombie, and Darkness
+2C - [MagiTek] Imp and Poison
+2D - [MagiTek] Imp, Poison, and Darkness
+2E - [MagiTek] Imp, Poison, and Zombie
+2F - [MagiTek] Imp, Poison, Zombie, and Darkness
+30 - Imp and Invisible
+31 - Imp, Invisible, and Darkness
+32 - Imp, Invisible, and Zombie
+33 - Imp, Invisible, Zombie, and Darkness
+34 - Imp, Invisible, and Poison
+35 - Imp, Invisible, Poison, and Darkness
+36 - Imp, Invisible, Poison, and Zombie
+37 - Imp, Invisible, Poison, Zombie, and Darkness
+38 - [MagiTek] Imp and Invisible
+39 - [MagiTek] Imp, Invisible, and Darkness
+3A - [MagiTek] Imp, Invisible, and Zombie
+3B - [MagiTek] Imp, Invisible, Zombie, and Darkness
+3C - [MagiTek] Imp, Invisible, and Poison
+3D - [MagiTek] Imp, Invisible, Poison, and Darkness
+3E - [MagiTek] Imp, Invisible, Poison, and Zombie
+3F - [MagiTek] Imp, Invisible, Poison, Zombie, and Darkness
+40 - Stone
+41 - Stone and Darkness
+42 - Stone and Zombie
+43 - Stone, Zombie, and Darkness
+44 - Stone and Poison
+45 - Stone, Poison, and Darkness
+46 - Stone, Poison, and Zombie
+47 - Stone, Poison, Zombie, and Darkness
+48 - [MagiTek] Stone
+49 - [MagiTek] Stone and Darkness
+4A - [MagiTek] Stone and Zombie
+4B - [MagiTek] Stone, Zombie, and Darkness
+4C - [MagiTek] Stone and Poison
+4D - [MagiTek] Stone, Poison, and Darkness
+4E - [MagiTek] Stone, Poison, and Zombie
+4F - [MagiTek] Stone, Poison, Zombie, and Darkness
+50 - Stone and Invisible
+51 - Stone, Invisible, and Darkness
+52 - Stone, Invisible, and Zombie
+53 - Stone, Invisible, Zombie, and Darkness
+54 - Stone, Invisible, and Poison
+55 - Stone, Invisible, Poison, and Darkness
+56 - Stone, Invisible, Poison, and Zombie
+57 - Stone, Invisible, Poison, Zombie, and Darkness
+58 - [MagiTek] Stone and Invisible
+59 - [MagiTek] Stone, Invisible, and Darkness
+5A - [MagiTek] Stone, Invisible, and Zombie
+5B - [MagiTek] Stone, Invisible, Zombie, and Darkness
+5C - [MagiTek] Stone, Invisible, and Poison
+5D - [MagiTek] Stone, Invisible, Poison, and Darkness
+5E - [MagiTek] Stone, Invisible, Poison, and Zombie
+5F - [MagiTek] Stone, Invisible, Poison, Zombie, and Darkness
+60 - Stone and Imp
+61 - Stone, Imp, and Darkness
+62 - Stone, Imp, and Zombie
+62 - Stone, Imp, Zombie, and Darkness
+64 - Stone, Imp, and Poison
+65 - Stone, Imp, Poison, and Darkness
+66 - Stone, Imp, Poison, and Zombie
+67 - Stone, Imp, Poison, Zombie, and Darkness
+68 - [MagiTek] Stone and Imp
+69 - [MagiTek] Stone, Imp, and Darkness
+6A - [MagiTek] Stone, Imp, and Zombie
+6B - [MagiTek] Stone, Imp, Zombie, and Darkness
+6C - [MagiTek] Stone, Imp, and Poison
+6D - [MagiTek] Stone, Imp, Poison, and Darkness
+6E - [MagiTek] Stone, Imp, Poison, and Zombie
+6F - [MagiTek] Stone, Imp, Poison, Zombie, and Darkness
+70 - Stone, Imp, and Invisible
+71 - Stone, Imp, Invisible, and Darkness
+72 - Stone, Imp, Invisible, and Zombie
+73 - Stone, Imp, Invisible, Zombie, and Darkness
+74 - Stone, Imp, Invisible, and Poison
+75 - Stone, Imp, Invisible, Poison, and Darkness
+76 - Stone, Imp, Invisible, Poison, and Zombie
+77 - Stone, Imp, Invisible, Poison, Zombie, and Darkness
+78 - [MagiTek] Stone, Imp, and Invisible
+79 - [MagiTek] Stone, Imp, Invisible, and Darkness
+7A - [MagiTek] Stone, Imp, Invisible, and Zombie
+7B - [MagiTek] Stone, Imp, Invisible, Zombie, and Darkness
+7C - [MagiTek] Stone, Imp, Invisible, and Poison
+7D - [MagiTek] Stone, Imp, Invisible, Poison, and Darkness
+7E - [MagiTek] Stone, Imp, Invisible, Poison, and Zombie
+7F - [MagiTek] Stone, Imp, Invisible, Poison, Zombie, and Darkness
+80 - Wounded
+.
+.
+FF - Wounded
+
+===========
+1.06 Float:
+===========
+
+It appears that this address is used only to store the status float.
+
+00 to 7F - Not floating
+80 to FF - Floating
+
+If anyone can find any other effect this address has, please let me
+know so I can append this FAQ and credit you for it.
+
+=============
+1.07 Command:
+=============
+
+Any one of the four command addresses can be replaced with any one of
+the following commands listed below. This means Terra can have Shock,
+Health, Mimic, and Runic as her four battle commands!
+
+Some commands will not work, such as Possess. Obviously, any value
+higher than 1D will not work.
+
+00 - Fight
+01 - Item
+02 - Magic
+03 - Morph
+04 - Revert
+05 - Steal
+06 - Capture
+07 - Swdtech
+08 - Throw
+09 - Tools
+0A - Blitz
+0B - Runic
+0C - Lore
+0D - Sketch
+0E - Control
+0F - Slot
+10 - Rage
+11 - Leap
+12 - Mimic
+13 - Dance
+14 - Row
+15 - Def.
+16 - Jump
+17 - X-Magic
+18 - GP Rain
+19 - Summon
+1A - Health
+1B - Shock
+1C - Possess
+1D - MagiTek
+1E - [none]
+1F - [none]
+20 - [Glitch]
+
+============================================
+1.08 Vigor, Speed, Stamina, and Magic Power:
+============================================
+
+Each of these statistics have their own respective addresses and can
+take values from 0 to 255 (00 to FF in hex). Keep in mind that the
+stats are based AFTER weapon/armor/relics equipped. This means that
+if you've got the Blizzard sword equipped, it gives a +2 bonus to
+Magic Power. If you give Magic Power a value of 250 and then remove
+the Blizzard sword, your Magic Power will drop to 248. Similarly, if
+you set a value of 255 to Vigor and then equip the Illumina sword,
+which gives +7 to Vigor, your Vigor statistic will go over 255 limit,
+reset to 0 and you will wind up with a Vigor statistic of 7. This is
+especially important when dealing with the Speed statistic. C8 is
+usually a good number for all statistics (C8 = 200, by the way).
+
+====================
+1.09 Esper Equipped:
+====================
+
+This is the Esper that the character is currently carrying. However,
+if you unequip the Esper, you will lose the Esper and it will not
+appear in the list of Espers unless you already have it. As before,
+any value higher than 1A will glitch because there are only 27 Espers.
+
+00 - Ramuh
+01 - Ifrit
+02 - Shiva
+03 - Siren
+04 - Terrato
+05 - Maduin
+06 - Shoat
+07 - Bismark
+08 - Stray
+09 - Palidor
+0A - Tritoch
+0B - Odin
+0C - Raiden
+0D - Bahamut
+0E - Alexandr
+0F - Crusader
+10 - Ragnarok
+11 - Kirin
+12 - Zoneseek
+13 - Carbunkl
+14 - Phantom
+15 - Sraphim
+16 - Golem
+17 - Unicorn
+18 - Fenrir
+19 - Startlet
+1A - Phoenix
+
+=========================================================
+1.10 Weapon, Shield, Helmet, Armor, Relic 1, and Relic 2:
+=========================================================
+
+These addresses contain the values for your equipment. You can even
+assign equipment that characters can't normally equip without the
+Merit Award, like making Relm equipped the Illumina sword. You can
+even assign the wrong equipment to the slots, however, I did not find
+it particularly useful in any way.
+
+There is a grand total of 255 possible items. Values, therefore, range
+from 00 to FE.
+
+The value of FF deletes the item in question. It is used to indicate a
+clear space, or "Empty", in the equipment slot.
+
+See the Items section for a complete listing of the items associated
+with each hex value.
+
+
+*********************
+* 2. Gold and Stuff *
+*********************
+
+
+Gold
+Gold is stored at addresses 2473, 2474, and 2475. In the same fashion
+as the experience is stored, the gold is also stored in reverse order.
+
+For 5,000,000 gold, which is 4C4B40 in hex, input 40 in 2473, 4B in
+2474, and 4C in 2475.
+
+Steps
+The same applies for steps taken. Steps are kept in addresses 2479,
+247A, and 247B. Again, the hex numbers are stored in reverse order.
+This is useful for Strago's Step Mine spell. Step Mine divides the
+number of steps taken in the game by 32, rounded down, and inflicts
+that amount of damage on the opponent.
+
+
+************
+* 3. Items *
+************
+
+
+Items that you carry in your inventory begins at address 247C.
+There are a total of 255 possible items, as mentioned before.
+Therefore, listing every item will take up 255 addresses beginning
+at 247C, and ending at 257A. An item placed at 257B will be counted
+in the item total, but will not appear on the item selection screen.
+
+Each individual item amount, however, are stored beginning at address
+257C. In the same manner that there are 255 possible items, there are
+255 item amount addresses associated with the item in question. The
+last item amount address is, logically, 267A.
+
+It is possible to list an item with 00 amount or have an amount with
+no item associated with it, but I did not find this useful in any way.
+
+The fact that all 255 items fill up the entire item selection screen
+also disproves some rumours that have been circulated ages ago:
+There is no Gamma Sword. There is no Paladin Ring.
+
+Dirk
+00 - Dirk
+01 - MithrilKnife
+02 - Guardian
+03 - Air Lancet
+04 - ThiefKnife
+05 - Assassin
+06 - Man Eater
+07 - SwordBreaker
+08 - Graedus
+09 - ValiantKnife
+
+Sword
+0A - MithrilBlade
+0B - RegalCutlass
+0C - Rune Edge
+0D - Flame Sabre
+0E - Blizzard
+0F - ThunderBlade
+10 - Epee
+11 - Break Blade
+12 - Drainer
+13 - Enhancer
+14 - Crystal
+15 - Falchion
+16 - Soul Sabre
+17 - Ogre Nix
+18 - Excalibur
+19 - Scimiter
+1A - Illumina
+1B - Ragnarok
+1C - Atma Weapon
+
+Lance
+1D - Mithril Pike
+1E - Trident
+1F - Stout Spear
+20 - Partisan
+21 - Pearl Lance
+22 - Gold Lance
+23 - Aura Lance
+24 - Imp Halberd
+
+Dirk
+25 - Imperial
+26 - Kodachi
+27 - Blossom
+28 - Hardened
+29 - Striker
+2A - Stunner
+
+Knife
+2B - Ashura
+2C - Kotetsu
+2D - Forged
+2E - Tempest
+2F - Murasame
+30 - Aura
+31 - Strato
+32 - Sky Render
+
+Rod
+33 - Heal Rod
+34 - Mithril Rod
+35 - Fire Rod
+36 - Ice Rod
+37 - Thunder Rod
+38 - Poison Rod
+39 - Pearl Rod
+3A - Gravity Rod
+3B - Punisher
+3C - Magus Rod
+
+Brush
+3D - Chocobo Brsh
+3E - DaVinci Brsh
+3F - Magical Brsh
+40 - Rainbow Brsh
+
+Stars
+41 - Shuriken
+42 - Ninja Star
+43 - Tack Star
+
+Special
+44 - Flail
+45 - Full Moon
+46 - Morning Star
+47 - Boomerang
+48 - Rising Sun
+49 - Hawk Eye
+4A - Bone Club
+4B - Sniper
+4C - Wing Edge
+
+Gambler
+4D - Cards
+4E - Darts
+4F - Doom Darts
+50 - Trump
+51 - Dice
+52 - Fixed Dice
+
+Claw
+53 - MetalKnuckle
+54 - Mithril Claw
+55 - Kaiser
+56 - Poison Claw
+57 - Fire Knuckle
+58 - Dragon Claw
+59 - Tiger Fangs
+
+Shield
+5A - Buckler
+5B - Heavy Shld
+5C - Mithril Shld
+5D - Gold Shld
+5E - Aegis Shld
+5F - Diamond Shld
+60 - Flame Shld
+61 - Ice Shld
+62 - Thunder Shld
+63 - Crystal Shld
+64 - Genji Shld
+65 - TortoiseShld
+66 - Cursed Shld
+67 - Paladin Shld
+68 - Force Shld
+
+Helmet
+69 - Leather Hat
+6A - Hair Band
+6B - Plumed Hat
+6C - Beret
+6D - Magus Hat
+6E - Bandana
+6F - Iron Helmet
+70 - Coronet
+71 - Bard's Hat
+72 - Green Beret
+73 - Head Band
+74 - Mithril Helm
+75 - Tiara
+76 - Gold Helmet
+77 - Tiger Mask
+78 - Red Hat
+79 - Mystery Veil
+7A - Circlet
+7B - Regal Crown
+7C - Diamond Helm
+7D - Dark Hood
+7E - Crystal Helm
+7F - Oath Veil
+80 - Cat Hood
+81 - Genji Helmet
+82 - Thornlet
+83 - Titanium
+
+Armor
+84 - LeatherArmor
+85 - Cotton Robe
+86 - Kung Fu Suit
+87 - Iron Armor
+88 - Silk Robe
+89 - Mithril Vest
+8A - Ninja Gear
+8B - White Dress
+8C - Mithril Mail
+8D - Gaia Gear
+8E - Mirage Dress
+8F - Gold Armor
+90 - Power Sash
+91 - Light Robe
+92 - Diamond Vest
+93 - Red Jacket
+94 - Force Armor
+95 - DiamondArmor
+96 - Dark Gear
+97 - Tao Robe
+98 - Crystal Mail
+99 - Czarina Gown
+9A - Genji Armor
+9B - Imp's Armor
+9C - Minerva
+9D - Tabby Suit
+9E - Chocobo Suit
+9F - Moogle Suit
+A0 - Nutkin Suit
+A1 - BehemethSuit
+A2 - Snow Muffler
+
+Tool
+A3 - NoiseBlaster
+A4 - Bio Blaster
+A5 - Flash
+A6 - Chain Saw
+A7 - Debilitator
+A8 - Drill
+A9 - Air Anchor
+AA - AutoCrossbow
+
+Skean
+AB - Fire Skean
+AC - Water Edge
+AD - Bolt Edge
+AE - Inviz Edge
+AF - Shadow Edge
+
+Relic
+B0 - Goggles
+B1 - Star Pendant
+B2 - Peace Ring
+B3 - Amulet
+B4 - White Cape
+B5 - Jewel Ring
+B6 - Fair Ring
+B7 - Barrier Ring
+B8 - MithrilGlove
+B9 - Guard Ring
+BA - RunningShoes
+BB - Wall Ring
+BC - Cherub Down
+BD - Cure Ring
+BE - True Knight
+BF - DragoonBoots
+C0 - Zephyr Cape
+C1 - Czarina Ring
+C2 - Cursed Cing
+C3 - Earrings
+C4 - Atlas Armlet
+C5 - BlizzardRing
+C6 - Rage Ring
+C7 - Sneak Ring
+C8 - Pod Bracelet
+C9 - Hero Ring
+CA - Ribbon
+CB - Muscle Belt
+CC - Crystal Orb
+CD - Gold Hairpin
+CE - Economizer
+CF - Thief Glove
+D0 - Gauntlet
+D1 - Genji Glove
+D2 - Hyper Wrist
+D3 - Offering
+D4 - Beads
+D5 - Black Belt
+D6 - Coin Toss
+D7 - FakeMustache
+D8 - Gem Box
+D9 - Dragon Horn
+DA - Merit Award
+DB - Momento Ring
+DC - Safety Bit
+DD - Relic Ring
+DE - Moogle Charm
+DF - Charm Bangle
+E0 - Marvel Shoes
+E1 - Back Gaurd
+E2 - Gale Hairpin
+E3 - Sniper Sight
+E4 - Exp. Egg
+E5 - Tintinabar
+E6 - Sprint Shoes
+
+Miscellaneous
+E7 - Rename Card
+E8 - Tonic
+E9 - Potion
+EA - X-Potion
+EB - Tincture
+EC - Ether
+ED - X-Ether
+EE - Elixir
+EF - Megalixir
+F0 - Fenix Down
+F1 - Revivify
+F2 - Antidote
+F3 - Eydrop
+F4 - Soft
+F5 - Remedy
+F6 - Sleeping Bag
+F7 - Tent
+F8 - Green Cherry
+F9 - Magicite
+FA - Super Ball
+FB - Echo Screen
+FC - Smoke Bomb
+FD - Warp Stone
+FE - Dried Meat
+
+And
+FF - [Nothing]
+
+In the same way FF removes an equipped item, FF as an inserted value
+also clears that particular slot in the item selection screen. If you
+do this, make sure that you also input 00 as the item amount in the
+corresponding address.
+
+Address matching is easy:
+Item name at 2493 corresponds to the Item amount at 2593
+
+
+************
+* 4. Esper *
+************
+
+
+All the Espers in your Skills menu are listed in these addresses:
+
+267C          267D          267E          267F
+
+Ramuh         Stray         Ragnarok      Fenrir
+Ifrit         Palidor       Kirin         Startlet
+Shiva         Tritoch       Zoneseek      Phoenix
+Siren         Odin          Carbunkl
+Terrato       Raiden        Phantom
+Maduin        Bahamut       Sraphim
+Shoat         Alexandr      Golem
+Bismark       Crusader      Unicorn
+
+Values in these addresses will give you (if any) Espers acquired.
+Applying FF as a value to all these addresses gives you all 27 Espers.
+Any other value gives various combinations of the Espers associated
+with the address.
+
+
+************
+* 5. Magic *
+************
+
+
+Magic is very simple to apply. Because the learned percentage is in
+decimal, a 100% learned spell is 64 in hex. When the value hits 64,
+it automatically promotes it to FF, where the spell turns white and
+the percentage learned disappears. This is learning the spell the
+"normal" way. You can, however, assign to any spell any amount of
+"learned" percentage.
+
+If you try and give it a value of more than 64, the spell will remain
+in "learning process" and you will get the overlap of number and you
+might not be able to learn the spell properly.
+
+00 = Not learned, spell name not visible
+32 = 50% learned, spell name transparent
+64 = 100% learned, spell name remains transparent
+
+FF = Learned, spell name white, spell is selectable in battle
+
+Obviously, the easiest way is to just stick FF as the spell value to
+give yourself the spell.
+
+Listed below are each character's spell addresses. Listed for Terra
+are each individual address and its associated spell. It would take
+too much to list EVERYONE'S spells, you can make the necessary
+calculations.
+
+Terra  - Addresses 2681 to 26B6
+
+2681 Fire
+2682 Ice
+2683 Bolt
+2684 Poison
+2685 Drain
+2686 Fire2
+2687 Ice2
+2688 Bolt2
+2689 Bio
+268A Fire3
+268B Ice3
+268C Bolt3
+268D Break
+268E Doom
+268F Pearl
+2690 Flare
+2691 Demi
+2692 Quartr
+2693 X-Zone
+2694 Meteor
+2695 Ultima
+2696 Quake
+2697 W Wind
+2698 Merton
+2699 Scan
+269A Slow
+269B Rasp
+269C Mute
+269D Safe
+269E Sleep
+269F Muddle
+26A0 Haste
+26A1 Stop
+26A2 Bserk
+26A3 Float
+26A4 Imp
+26A5 Rflect
+26A6 Shell
+26A7 Vanish
+26A8 Haste2
+26A9 Slow2
+26AA Osmose
+26AB Warp
+26AC Quick
+26AD Dispel
+26AE Cure
+26AF Cure2
+26B0 Cure3
+26B1 Life
+26B2 Life2
+26B3 Anitdot
+26B4 Remedy
+26B5 Regen
+26B6 Life3
+
+Locke  - Addresses 26B7 to 26EC
+Cyan   - Addresses 26ED to 2722
+Shadow - Addresses 2723 to 2758
+Edgar  - Addresses 2759 to 278E
+Sabin  - Addresses 278F to 27C4
+Celes  - Addresses 27C5 to 27FA
+Strago - Addresses 27FB to 2830
+Relm   - Addresses 2831 to 2866
+Setzer - Addresses 2867 to 289C
+Mog    - Addresses 289D to 28D2
+Gau    - Addresses 28D3 to 2908
+
+
+**************
+* 6. SwdTech *
+**************
+
+
+I have not yet been able to decipher how Cyan's Swdtech skills are
+stored in the save state. If you know how, let me know and I will
+gladly give you credit for the work done.
+
+However, since the SwdTech skills are based on Cyan's Level, just give
+him Level 99 and he will acquire them all already!
+
+
+************
+* 7. Blitz *
+************
+
+
+All of Sabin's Blitz techniques are located at address 293C. There are
+8 possible Blitz. Since each Blitz can be active, i.e. performable, or
+not, the total number of possible combinations is 2 to power 8 or 256.
+Hex values run from 00 to FF which totals 256. Therefore, if you want
+a particular Blitz to be active and another not, simply calculate the
+value associated with the combination you want. As explained in the
+beginning, I cannot explain the entire mechanics of this, it would
+take too long. Just input FF to acquire all of the Blitz techniques.
+
+
+***********
+* 8. Lore *
+***********
+
+
+The same applies for Strago's Lore spells. Addresses range from 293C
+to 293E. Each address holds 8 spells, as explained in the previous
+section on Sabin's Blitz. And again, FF will give all the spells of
+that address.
+
+293C - Condemned
+       Roulette
+       Clean Sweep
+       Aqua Rake
+       Aero
+       Blow Fish
+       Big Guard
+       Revenge
+293D - Pearl Wind
+       L.5 Doom
+       L.4 Flare
+       L.3 Muddle
+       Reflect???
+       L? Pearl
+       Step Mine
+       Force Field
+293E - Dischord
+       Sour Mouth
+       Pep Up
+       Rippler
+       Stone
+       Quasar
+       Grand Train
+       Exploder
+
+
+***********
+* 9. Rage *
+***********
+
+
+Gau's Rages are listed below. The setup is identical to Sabin's Blitz
+and Strago's Lore in the previous sections. Each address holds 8 rages
+and there are a lot of them. The addresses run from 293F to 295E.
+Values inputted will determine which rages (if any) Gau has "learned".
+FF as a value allows Gau to learn all of the rages assigned to that
+address. The Rages are listed in the same form as in the menu screen.
+
+293F - Guard         Soldier
+       Templar       Ninja
+       Samurai       Orog
+       Mag Roader    Retainer
+2940 - Hazer         Dahling
+       Rain Man      Brawler
+       Apokryphos    Dark Force
+       Whisper       Over-Mind
+2941 - Osteosaur     Commander
+       Rhodox        Were-Rat
+       Ursus         Rhinotaur
+       Steroidite    Leafer
+2942 - Stray Cat     Lobo
+       Doberman      Vomammoth
+       Fidor         Baskervor
+       Suriander     Chimera
+2943 - Behemoth      Mesosaur
+       Pterodon      FossilFang
+       White Drgn    Doom Drgn
+       Brachosaur    Tyranosaur
+2944 - Dark Wind     Beakor
+       Vulture       Harpy
+       Hermit Crab   Trapper
+       Hornet        Crasshoppr
+2945 - Delta Bug     Gilomantis
+       Trilium       Nightshade
+       Tumbleweed    Bloompire
+       Trilobiter    Siegfried
+2946 - Nautiloid     Exocite
+       Anguiform     Reach Frog
+       Lizard        Chickenlip
+       Hoover        Rider
+2947 - Chupon        Pipsqueak
+       M-TekArmor    Sky Armor
+       Telstar       Lethal Wpn
+       Vaporite      Flan
+2948 - Ing           Humpty
+       Brainpan      Cruller
+       Cactrot       RepoMan
+       Harvester     Bomb
+2949 - Still Life    Boxed Set
+       Slam Dancer   Hades Gigas
+       Pug           Magic Urn
+       Mover         Figaliz
+294A - Buffalax      Aspik
+       Ghost         Crawler
+       Sand Ray      Areneid
+       Actaneon      Sand Horse
+294B - Dark Side     Mad Oscar
+       Crawly        Bleary
+       Marshal       Trooper
+       General       Covert
+294C - Ogor          Warlock
+       Madam         Joker
+       Iron Fist     Goblin
+       Apparite      PowerDemon
+294D - Displayer     Vector Pup
+       Peepers       Sewer Rat
+       Slatter       Rhinox
+       Rhobite       Wild Cat
+294E - Red Fang      Bounty Man
+       Tusker        Ralph
+       Chitonid      Wart Puck
+       Rhyos         SrBehemoth
+294F - Vectaur       Wyvern
+       Zombone       Dragon
+       Brontaur      Allosaurus
+       Cirpius       Sprinter
+2950 - Gobbler       Harpai
+       Gloomshell    Drop
+       Mind Candy    WeedFeeder
+       Luridan       Toe Cutter
+2951 - Over Grunk    Exoray
+       Crusher       Uroburos
+       Primordite    Sky Cap
+       Cephaler      Maliga
+2952 - Gigan Toad    Geckorex
+       Cluck         LandWorm:
+       Test Rider    PlutoArmor
+       Tomb Thumb    HeavyArmor
+2953 - Chaser        Scullion
+       Poplium       Intangir
+       Misfit        Eland
+       Enuo          Deep Eye
+2954 - GreaseMonk    NeckHunter
+       Grenadeb      Critic
+       Pan Dora      SoulDancer
+       Gigantos      Mag Roader
+2955 - Spek Tor      Parasite
+       EarthGuard    Coelecite
+       Anemone       Hipocampus
+       Spectre       Evil Oscar
+2956 - Slurm         Latimeria
+       StillGoing    Allo Ver
+       Phase         Outsider
+       Barb-e        Parasoul
+2957 - Pm Stalker    Hemophyte
+       Sp Forces     Nohrabbit
+       Wizard        Scrapper
+       Ceritops      Commando
+2958 - Opinicus      Poppers
+       Lunaris       Garm
+       Vindr         Kiwak
+       Nastidon      Rinn
+2959 - Insecare      Vermin
+       Mantodea      Bogy
+       Prussian      Black Drgn
+       Adamanchyt    Dante
+295A - Wirey Drgn    Dueller
+       Psycot        Muus
+       Karkass       Punisher
+       Balloon       Gabbldegak
+295B - GtBehemoth    Scorpion
+       Chaos Drgn    Spit Fire
+       Vectagoyle    Lick
+       Osprey        Mag Roader
+295C - Bug           Sea Flower
+       Fortis        Abolisher
+       Aquila        Junk
+       Mandrake      1st Class
+295D - Tap Dancer    Necromancer
+       Borras        Mag Roader
+       Wild Rat      Gold Bear
+       Innoc         Trixter
+295E - Red Wolf      Didalos
+       Woolly        Veteran
+       Sky Base      IronHitman
+       Io
+
+
+*************
+* 10. Dance *
+*************
+
+
+Mog's Dance techniques are in address 295F. And, just like the Blitz,
+Lore, and Rage sections, the value determines which Dance have been
+learned, if any. FF gives access to all Dance techniques.
+
+295F - Wind Song
+       Forest Suite
+       Desert Aria
+       Love Sonata
+       Earth Blues
+       Water Rondo
+       Dusk Requium
+       Snowman Jazz
+
+
+[+++++++++]
+[SECTION C]
+[+++++++++]
+
+
+Credits/Acknowledgements
+------------------------
+
+-> Squaresoft
+   Tip of the hat for the creators of this awesome game!
+-> ZSNES Developers
+   Without the emulator, we would have no save state ability.
+-> BreakPoint Software Inc.
+   Great job on the Hex editor. The GUI is very nice.
+-> Gamefaqs
+   Thanks to Jeff "CJayC" Veasey for hosting the awesome GAMEFAQS
+   site and for putting this FAQ up.
+
+Everything Else
+---------------
+
+This FAQ is copright (c) of Zelaphny 2001. Any reproduction, in whole
+or in part, without the expressed consent of the author is illegal and
+subject to law. This FAQ may only be found on www.gamefaqs.com where
+it is posted freely and is available to the public domain for use.
+
+Final Fantasy III is a (tm) trademark of Squaresoft. Hex Workshop is
+a (tm) of BreakPoint Software Inc.
+
+Zelaphny can be reached by e-mail at zelaphny@hotmail.com
+
+
